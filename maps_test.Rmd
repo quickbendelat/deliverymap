@@ -1,0 +1,51 @@
+---
+title: "maptest"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(googleway)
+
+```
+
+
+
+```{r}
+google_map_directions(origin = "Waikato Hospital Emergency Department",
+  destination = "Waikato Hospital Emergency Department",
+  travel_mode = "driving",
+  waypoints = list("1 Sunnyside Road",
+                 "43C Dominion Roda",
+                 "33 Rotokauri Road",
+                 "4 Tamar Place",
+                 "57 Enfield Street",
+                 "7 Dorchester Place",
+                 "127 Brymer Road",
+                 "24 Everton Place",
+                 "20 Bartholomew Drive",
+                 "4 Vernall Street",
+                 "10A Roy Street",
+                 "18B Roy Street",
+                 "21 Roy Street",
+                 "33 Waimarie Street",
+                 "100C Dinsdale Road",
+                 "9 Leonard Place",
+                 "32A Hazelwood Avenue"),
+  dir_action = "navigate")
+```
+
+This only plots the first 10 waypoints.
+
+need to break the waypoint list to 9 waypoints.
+1) change 9th waypoint into destination
+2) add 9th waypoint from previous as next origin
+3) then current 9th waypoint as destination
+4) repeat as needed
+5) final one, put destination as original destination
+
+~origin,   ~destination,   ~waypoints
+
+
+
+
