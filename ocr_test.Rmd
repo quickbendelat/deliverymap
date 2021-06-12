@@ -1,0 +1,37 @@
+---
+title: "ocr_test"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tesseract)
+library(magick)
+library(magrittr)
+library(here)
+
+init_img_file <- "delivery_list.jpg"
+```
+
+
+# preprocssing of the image
+```{r}
+
+img_file <- image_read(paste(here(),init_img_file, sep = "/")) %>% 
+  image_resize("5000x") %>% 
+  image_rotate(90) %>% 
+  image_convert(type = "Grayscale", "png")
+
+# image_info(img_file)
+# image_display(img_file)
+
+```
+
+
+```{r}
+text <- ocr(img_file)
+
+cat(text)
+
+```
+
